@@ -1,34 +1,32 @@
-# Verifica+ — protótipo isolado
+# Verifica+ — protótipo web
 
-Site estático em HTML, CSS e JavaScript. Este repositório é dedicado somente ao Verifica+ e não usa código ou configuração de outros projetos.
+Site estático em HTML, CSS e JavaScript, com endpoints serverless mínimos para diagnóstico. Este repositório é exclusivo do Verifica+.
 
-## Estado real
-- Interface responsiva e formulário de demonstração: implementados.
-- Validação de formato de e-mail/telefone e consentimento: implementada no navegador.
-- Consulta real a Tinder, Badoo, Bumble ou Inner Circle: NÃO implementada.
-- API Google People conectada: NÃO implementada. A API do Google não revela se um contato está cadastrado em sites de relacionamento; ela oferece dados de perfil Google e contatos conforme permissões e consentimento.
-- Cobrança de R$ 14,90, Wiapy, UTMify, login, banco de dados e painel administrativo: NÃO implementados.
-- O formulário não envia nem armazena dados e não retorna resultados de cadastro.
+## Estado atual — transparência obrigatória
 
-## Próximas etapas necessárias
-1. Identificar uma fonte oficial/autorizada que permita consultar o status de cadastro de cada plataforma (não presumir que exista API pública para isso).
-2. Definir a base legal, consentimento, política de retenção e processo para atender solicitações de titulares conforme a LGPD.
-3. Construir backend seguro para integrações autorizadas; nunca expor chaves de API no navegador ou no repositório.
-4. Integrar o pagamento somente depois de a consulta real estar implementada, com confirmação de pagamento no servidor e verificação de webhook.
-5. Testar respostas positivas, negativas, erros, limites de requisição e indisponibilidade. Se não houver resposta confiável, exibir “Não foi possível confirmar”.
+- Interface responsiva e formulário demonstrativo: implementados.
+- Validação local de formato de e-mail/telefone: implementada no navegador.
+- Endpoint de saúde: `GET /api/health`.
+- Endpoint de consulta: `POST /api/consult`; responde HTTP 503 `LOOKUP_NOT_CONFIGURED` intencionalmente.
+- Consulta real a Tinder, Badoo, Bumble ou Inner Circle: **não implementada**.
+- Pagamento de R$ 14,90: **não implementado**.
+- Banco de dados, autenticação e armazenamento de contatos: **não configurados**.
 
-## Segurança e privacidade
-A ferramenta não pode ser usada para investigar pessoas sem autorização, enumerar contas ou acessar contas privadas. Não testar endpoints de recuperação de senha para descobrir se terceiros possuem contas. Uma consulta real só deve ser criada com integração oficial/autorizada, base legal apropriada, minimização de dados e revisão de segurança.
+O endpoint de consulta não aceita nem armazena identificadores. Não interprete a resposta 503 como ausência ou presença de cadastro. O serviço só poderá produzir resultados quando houver fonte oficial/expressamente autorizada, contrato e testes que sustentem a consulta.
 
-## Publicação Vercel
-Importe somente este repositório como um projeto Vercel novo. Para este site estático:
-- Framework preset: Other
-- Root Directory: /
-- Build Command: deixar vazio
-- Output Directory: deixar vazio (a raiz contém o arquivo index.html)
-- Install Command: deixar vazio
+## Testes após publicar
 
-Verifique se o projeto Vercel correto está conectado a fiquericolucas/P-gina-de-consulta- e à branch main. A configuração de deploy e o status da conta Vercel não podem ser confirmados a partir deste repositório.
+1. Abra a URL da Vercel e confira página, CSS, JavaScript e navegação.
+2. Abra `/api/health`: deve responder HTTP 200 com `ok: true`, `liveLookupsEnabled: false` e `paymentsEnabled: false`.
+3. Envie um POST de teste a `/api/consult`: deve responder HTTP 503 com `LOOKUP_NOT_CONFIGURED`. Isso confirma que o endpoint está protegido contra resultados fictícios, não que a consulta real exista.
+4. Confirme a aba Deployments e os logs de build da Vercel antes de declarar a publicação validada.
 
-## Teste local
-Abra index.html no navegador. O formulário deve validar o formato e exibir uma mensagem informando que não existe consulta real.
+## Publicação na Vercel
+
+Importe o repositório `fiquericolucas/P-gina-de-consulta-` na Vercel. Para este protótipo estático com funções serverless, use a raiz do repositório como Root Directory e não configure Build Command ou Output Directory personalizados, salvo se o painel indicar necessidade. Após o deploy, teste os endpoints acima.
+
+## Antes de vender consultas
+
+É necessário selecionar provedores que autorizem expressamente esse tipo de verificação; construir backend com autenticação, limites de uso e proteção contra abuso; documentar base legal, finalidade, retenção, direitos e contato conforme a LGPD; implementar pagamento com validação server-side e webhooks; e testar erros, segurança e privacidade. A API Google People não informa o estado de cadastro de terceiros em apps de relacionamento.
+
+Não colete senhas nem use mecanismos de recuperação de conta ou enumeração de usuários para inferir cadastros.
