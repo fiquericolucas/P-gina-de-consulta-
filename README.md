@@ -6,11 +6,19 @@ Site estático em HTML, CSS e JavaScript. Este repositório é dedicado somente 
 - Interface responsiva e formulário de demonstração: implementados.
 - Validação de formato de e-mail/telefone e consentimento: implementada no navegador.
 - Consulta real a Tinder, Badoo, Bumble ou Inner Circle: NÃO implementada.
+- API Google People conectada: NÃO implementada. A API do Google não revela se um contato está cadastrado em sites de relacionamento; ela oferece dados de perfil Google e contatos conforme permissões e consentimento.
 - Cobrança de R$ 14,90, Wiapy, UTMify, login, banco de dados e painel administrativo: NÃO implementados.
 - O formulário não envia nem armazena dados e não retorna resultados de cadastro.
 
+## Próximas etapas necessárias
+1. Identificar uma fonte oficial/autorizada que permita consultar o status de cadastro de cada plataforma (não presumir que exista API pública para isso).
+2. Definir a base legal, consentimento, política de retenção e processo para atender solicitações de titulares conforme a LGPD.
+3. Construir backend seguro para integrações autorizadas; nunca expor chaves de API no navegador ou no repositório.
+4. Integrar o pagamento somente depois de a consulta real estar implementada, com confirmação de pagamento no servidor e verificação de webhook.
+5. Testar respostas positivas, negativas, erros, limites de requisição e indisponibilidade. Se não houver resposta confiável, exibir “Não foi possível confirmar”.
+
 ## Segurança e privacidade
-A ferramenta não pode ser usada para investigar pessoas sem autorização, enumerar contas ou acessar contas privadas. Uma consulta real só deve ser criada com integração oficial/autorizada, base legal apropriada, minimização de dados e revisão de segurança. Não coloque chaves de API no navegador ou neste repositório.
+A ferramenta não pode ser usada para investigar pessoas sem autorização, enumerar contas ou acessar contas privadas. Não testar endpoints de recuperação de senha para descobrir se terceiros possuem contas. Uma consulta real só deve ser criada com integração oficial/autorizada, base legal apropriada, minimização de dados e revisão de segurança.
 
 ## Publicação Vercel
 Importe somente este repositório como um projeto Vercel novo. Para este site estático:
