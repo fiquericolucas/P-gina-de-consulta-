@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Verifica+ — protótipo transparente para consultas autorizadas em plataformas de relacionamento."><meta name="theme-color" content="#0b6b53"><title>Verifica+ | Mais clareza, com responsabilidade</title><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="stylesheet" href="/styles.css"></head>
 <body><header class="topbar"><a class="brand" href="/" aria-label="Verifica+ início"><span class="brand-mark">V+</span><span>verifica<span class="plus">+</span></span></a><nav class="top-nav"><a href="#como-funciona" class="nav-link">Como funciona</a><a href="#avaliacoes" class="nav-link">Transparência</a></nav></header>
-<main><section class="hero"><div class="hero-copy"><span class="eyebrow"><span class="dot"></span> PRIVACIDADE E TRANSPARÊNCIA</span><h1>Mais clareza.<br><span>Mais tranquilidade.</span></h1><p class="lead">Um projeto para consultas de cadastros em plataformas de relacionamento, que só poderá apresentar resultados quando houver fontes oficiais, acesso autorizado e validação técnica.</p><div class="price-box"><div><small>Preço planejado</small><strong>R$ 14,90 <span>/ consulta</span></strong></div><span class="tag">AINDA NÃO COBRADO</span></div><a class="button" href="#consulta">Conhecer a consulta <span aria-hidden="true">→</span></a><div class="trust"><span>✓ Sem pedir senhas</span><span>✓ Sem inventar resultados</span></div></div>
+<main><section class="hero"><div class="hero-copy"><span class="eyebrow"><span class="dot"></span> PRIVACIDADE E TRANSPARÊNCIA</span><h1>Mais clareza.<br><span>Mais tranquilidade.</span></h1><p class="lead">O Verifica+ foi criado para ajudar a verificar se um e-mail ou número de telefone já aparece cadastrado em plataformas de relacionamento, como Tinder, Badoo, Bumble e Inner Circle. A proposta não é investigar a pessoa, acessar conversas ou perfis privados: é verificar apenas a existência de cadastro, quando uma fonte oficial e autorizada permitir. As consultas reais ainda estão em preparação.</p><div class="price-box"><div><small>Preço planejado</small><strong>R$ 14,90 <span>/ consulta</span></strong></div><span class="tag">AINDA NÃO COBRADO</span></div><a class="button" href="#consulta">Conhecer a consulta <span aria-hidden="true">→</span></a><div class="trust"><span>✓ Sem pedir senhas</span><span>✓ Sem inventar resultados</span></div></div>
 <div class="preview-card"><div class="card-heading"><div><small>PLATAFORMAS PLANEJADAS</small><h2>Integrações em preparação</h2></div><span class="shield" aria-hidden="true">✓</span></div>
 <div class="platform"><span class="platform-icon tinder">T</span><div><b>Tinder</b><small>Integração não disponível</small></div><span class="badge">Pendente</span></div><div class="platform"><span class="platform-icon badoo">b</span><div><b>Badoo</b><small>Integração não disponível</small></div><span class="badge">Pendente</span></div><div class="platform"><span class="platform-icon bumble">B</span><div><b>Bumble</b><small>Integração não disponível</small></div><span class="badge">Pendente</span></div><div class="platform"><span class="platform-icon inner">i</span><div><b>Inner Circle</b><small>Integração não disponível</small></div><span class="badge">Pendente</span></div><div class="notice"><b>ⓘ</b><p>Versão demonstrativa: nenhuma plataforma está conectada. Não há pesquisa real de cadastro nem pagamento ativo.</p></div></div></section>
 <section class="how" id="como-funciona"><div class="section-title"><span class="eyebrow">FLUXO PLANEJADO</span><h2>Como funciona</h2><p>O serviço só será ativado após validação técnica, autorização das fontes, revisão de privacidade e testes reais.</p></div><div class="steps"><article><span>01</span><h3>Informe o contato</h3><p>Somente dados próprios ou dados que você tenha autorização válida para consultar.</p></article><article><span>02</span><h3>Fonte autorizada</h3><p>O resultado dependerá de uma integração oficial ou de uma fonte que permita expressamente essa consulta.</p></article><article><span>03</span><h3>Resultado verificável</h3><p>O sistema deverá informar a fonte, a data e os limites da consulta, sem transformar ausência de resposta em certeza.</p></article></div></section>
@@ -9,29 +9,36 @@
 <form id="consult-form" class="form-card"><label for="identifier" id="identifier-label">Seu e-mail</label><div class="segmented"><label><input type="radio" name="method" value="email" checked><span>E-mail</span></label><label><input type="radio" name="method" value="phone"><span>Telefone</span></label></div><input id="identifier" name="identifier" type="email" placeholder="voce@exemplo.com" autocomplete="email" required><label class="consent"><input id="consent" type="checkbox" required><span>Confirmo que sou titular deste contato ou tenho autorização válida para verificá-lo.</span></label><button class="button full" type="submit">Validar formato <span aria-hidden="true">→</span></button><p class="form-note">Sem consulta real · sem cobrança · sem envio de dados</p><div id="form-message" class="form-message" role="status" aria-live="polite"></div></form></section>
 <section class="reviews" id="avaliacoes">
   <div class="section-title">
-    <span class="eyebrow">COMPROMISSO COM VOCÊ</span>
-    <h2>Confiança se constrói com transparência</h2>
-    <p>Estamos preparando o serviço. Não publicamos depoimentos fictícios nem avaliações inventadas. Quando houver clientes reais e autorização para divulgar suas opiniões, elas poderão aparecer aqui.</p>
+    <span class="eyebrow">OPINIÕES E EXPERIÊNCIAS</span>
+    <h2>Comentários e avaliações</h2>
+    <p>Queremos construir confiança com opiniões honestas. Ainda não há avaliações verificadas de clientes publicadas; não exibimos depoimentos fictícios nem notas inventadas.</p>
   </div>
-  <div class="review-grid">
-    <article class="review-card">
-      <div class="review-symbol" aria-hidden="true">✓</div>
-      <h3>Privacidade em primeiro lugar</h3>
-      <p>Não pedimos senhas de aplicativos de relacionamento e não prometemos acesso a dados privados.</p>
-      <span class="review-label">Compromisso do serviço</span>
-    </article>
-    <article class="review-card">
-      <div class="review-symbol" aria-hidden="true">◎</div>
-      <h3>Resultados sem exageros</h3>
-      <p>Uma consulta só poderá confirmar algo quando houver uma fonte legítima que sustente essa conclusão.</p>
-      <span class="review-label">Compromisso do serviço</span>
-    </article>
-    <article class="review-card">
-      <div class="review-symbol" aria-hidden="true">↗</div>
-      <h3>Transparência de verdade</h3>
-      <p>Informaremos claramente o que foi verificado, o que não foi possível confirmar e quais são os limites.</p>
-      <span class="review-label">Compromisso do serviço</span>
-    </article>
+  <div class="rating-summary" aria-live="polite">
+    <div class="rating-score"><strong id="rating-average">—</strong><div class="rating-stars" aria-label="Sem avaliações ainda">☆☆☆☆☆</div><span id="rating-count">Nenhuma avaliação neste navegador</span></div>
+    <div class="rating-summary-copy"><b>Sua opinião importa</b><p>Você pode deixar uma avaliação de demonstração abaixo. Por enquanto, ela fica salva somente neste navegador e não é enviada para o site nem fica visível para outras pessoas.</p></div>
+  </div>
+  <div class="reviews-layout">
+    <div>
+      <h3 class="subheading">Comentários neste dispositivo</h3>
+      <div id="review-list" class="review-list"><div class="empty-reviews">Ainda não há comentários neste navegador. Seja a primeira pessoa a avaliar a demonstração.</div></div>
+    </div>
+    <form id="review-form" class="form-card review-form">
+      <h3>Deixe sua avaliação</h3>
+      <label for="review-name">Nome ou apelido (opcional)</label>
+      <input id="review-name" name="review-name" type="text" maxlength="50" placeholder="Como podemos chamar você?">
+      <fieldset class="rating-picker"><legend>Sua nota</legend><div class="star-options">
+        <label><input type="radio" name="review-rating" value="1" required><span aria-label="1 estrela">★</span></label>
+        <label><input type="radio" name="review-rating" value="2"><span aria-label="2 estrelas">★</span></label>
+        <label><input type="radio" name="review-rating" value="3"><span aria-label="3 estrelas">★</span></label>
+        <label><input type="radio" name="review-rating" value="4"><span aria-label="4 estrelas">★</span></label>
+        <label><input type="radio" name="review-rating" value="5"><span aria-label="5 estrelas">★</span></label>
+      </div></fieldset>
+      <label for="review-comment">Comentário</label>
+      <textarea id="review-comment" name="review-comment" rows="4" maxlength="500" placeholder="Conte o que achou da página (até 500 caracteres)." required></textarea>
+      <button class="button full" type="submit">Registrar avaliação de demonstração →</button>
+      <p class="form-note">Não publique informações pessoais. Avaliações não são transmitidas nem compartilhadas nesta versão.</p>
+      <div id="review-message" class="form-message" role="status" aria-live="polite"></div>
+    </form>
   </div>
 </section>
 <section class="disclaimer"><b>Importante sobre a API do Google</b><p>A API Google People pode fornecer dados do perfil Google autenticado e dos contatos autorizados; ela não informa se um e-mail ou telefone está cadastrado no Tinder, Badoo, Bumble ou em outros sites de relacionamento. Por isso, o Verifica+ não mostrará “cadastro encontrado” ou “não encontrado” sem uma fonte legítima que confirme esse resultado.</p></section></main>
