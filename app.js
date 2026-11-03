@@ -8,7 +8,30 @@ const clear=()=>{message.textContent='';message.className='form-message';};
 const update=()=>{const phone=method()==='phone';label.textContent=phone?'Seu telefone com DDD':'Seu e-mail';input.type=phone?'tel':'email';input.placeholder=phone?'(85) 99999-9999':'voce@exemplo.com';input.autocomplete=phone?'tel':'email';input.inputMode=phone?'tel':'email';input.maxLength=phone?20:254;input.value='';input.setCustomValidity('');clear();};
 methods.forEach(el=>el.addEventListener('change',update));
 input.addEventListener('input',()=>{input.setCustomValidity('');clear();});
-form.addEventListener('submit',event=>{event.preventDefault();clear();if(!consent.checked){show('Confirme que é titular do contato ou tem autorização válida para verificá-lo.','error');consent.focus();return;}if(!input.value.trim()){show('Informe um e-mail ou telefone para validar o formato.','error');input.focus();return;}if(method()==='phone'){const digits=input.value.replace(/\D/g,'');if(digits.length<10||digits.length>13){show('Confira o telefone e inclua o DDD. Exemplo: (85) 99999-9999.','error');input.focus();return;}}else if(!input.checkValidity()){show('Digite um endereço de e-mail válido.','error');input.focus();return;}show('Formato válido. Este teste não pesquisa cadastros, não envia seus dados e não realiza cobranças. Consultas reais ainda não estão habilitadas.','success');});
+form.addEventListener('submit',async event=>{
+  event.preventDefault();clear();
+  if(!consent.checked){show('Confirme que é titular do contato ou tem autorização válida para verificá-lo.','error');consent.focus();return;}
+  if(!input.value.trim()){show('Informe um e-mail ou telefone válido.','error');input.focus();return;}
+  if(method()==='phone'){
+    const digits=input.value.replace(/\D/g,'');
+    if(digits.length<10||digits.length>13){show('Confira o telefone e inclua o DDD. Exemplo: (85) 99999-9999.','error');input.focus();return;}
+  }else if(!input.checkValidity()){show('Digite um endereço de e-mail válido.','error');input.focus();return;}
+  const button=form.querySelector('button[type="submit"]');
+  if(button){button.disabled=true;button.textContent='Verificando disponibilidade…';}
+  try{
+    const response=await fetch('/api/consult',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({method:method(),identifier:input.value.trim(),consent:consent.checked})});
+    const result=await response.json();
+    if(result.status==='not_confirmed'){
+      show(result.message||'Não foi possível confirmar a consulta. Nenhum resultado foi presumido.',response.status===503?'error':'error');
+    }else{
+      show('Não foi possível confirmar a consulta. Nenhum resultado foi presumido.','error');
+    }
+  }catch{
+    show('Não foi possível conectar ao serviço. Nenhum resultado foi confirmado.','error');
+  }finally{
+    if(button){button.disabled=false;button.innerHTML='Consultar disponibilidade <span aria-hidden="true">→</span>';}
+  }
+});
 
 /* Avaliações locais de demonstração: não são enviadas ao servidor. */
 const reviewForm=document.getElementById('review-form');
@@ -69,11 +92,7 @@ if(googleButton&&googleStatus){
       const result=await fetch('/api/auth/google',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({credential:response.credential})});
       const data=await result.json();
       if(!result.ok||!data.ok){setGoogleStatus(data.message||'Não foi possível validar sua conta Google.','error');return;}
-      if(data.emailOwnership==='authoritative'){
-        setGoogleStatus('E-mail confirmado pela conta Google: '+data.email+'. Isso não significa que exista cadastro em aplicativo de relacionamento.','success');
-      }else{
-        setGoogleStatus('Conta Google autenticada: '+data.email+'. Para esse endereço, será necessário um código adicional enviado à caixa postal.','error');
-      }
+      setGoogleStatus('Conta Google autenticada: '+data.email+'. Isso não consulta cadastros em aplicativos de relacionamento.','success');
     }catch{setGoogleStatus('Falha de conexão ao validar com o servidor. Tente novamente.','error');}
   };
   fetch('/api/auth/google-config').then(r=>r.json()).then(config=>{
