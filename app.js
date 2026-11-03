@@ -57,4 +57,36 @@ if(reviewForm){
   });
   renderReviews();
 }
+
+/* Login Google: confirmação limitada à identidade autenticada; nenhuma busca em apps terceiros. */
+const googleButton=document.getElementById('google-signin-button');
+const googleStatus=document.getElementById('google-auth-status');
+if(googleButton&&googleStatus){
+  const setGoogleStatus=(text,type='')=>{googleStatus.textContent=text;googleStatus.className='form-note '+type;};
+  const verifyGoogleCredential=async(response)=>{
+    setGoogleStatus('Validando a autenticação com segurança…');
+    try{
+      const result=await fetch('/api/auth/google',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({credential:response.credential})});
+      const data=await result.json();
+      if(!result.ok||!data.ok){setGoogleStatus(data.message||'Não foi possível validar sua conta Google.','error');return;}
+      if(data.emailOwnership==='authoritative'){
+        setGoogleStatus('E-mail confirmado pela conta Google: '+data.email+'. Isso não significa que exista cadastro em aplicativo de relacionamento.','success');
+      }else{
+        setGoogleStatus('Conta Google autenticada: '+data.email+'. Para esse endereço, será necessário um código adicional enviado à caixa postal.','error');
+      }
+    }catch{setGoogleStatus('Falha de conexão ao validar com o servidor. Tente novamente.','error');}
+  };
+  fetch('/api/auth/google-config').then(r=>r.json()).then(config=>{
+    if(!config.clientId){setGoogleStatus('Integração preparada. Falta cadastrar GOOGLE_CLIENT_ID nas variáveis da Vercel.');return;}
+    const script=document.createElement('script');script.src='https://accounts.google.com/gsi/client';script.async=true;script.defer=true;
+    script.onload=()=>{
+      if(!window.google?.accounts?.id){setGoogleStatus('Não foi possível carregar o serviço de autenticação Google.','error');return;}
+      window.google.accounts.id.initialize({client_id:config.clientId,callback:verifyGoogleCredential});
+      window.google.accounts.id.renderButton(googleButton,{theme:'outline',size:'large',shape:'pill',text:'continue_with',width:280});
+      setGoogleStatus('Use sua própria conta Google. O site não solicita acesso aos seus contatos.');
+    };
+    script.onerror=()=>setGoogleStatus('Serviço de autenticação Google indisponível no momento.','error');
+    document.head.appendChild(script);
+  }).catch(()=>setGoogleStatus('Não foi possível carregar a configuração do Google.','error'));
+}
 })();
