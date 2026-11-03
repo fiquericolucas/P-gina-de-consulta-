@@ -85,3 +85,12 @@ footer{border-color:#f0dce9}
  .preview-card,.form-card{padding:20px;border-radius:20px}
  .top-nav{gap:10px}
 }
+
+/* Google identity verification */
+.google-verification{padding:18px 0 12px;border-bottom:1px solid #f0dce9;margin-bottom:16px}
+.google-verification h3{margin:0 0 7px;font-size:18px;color:#39263a}
+.google-verification p{font-size:13px;line-height:1.55;color:#766879;margin:6px 0 12px}
+#google-signin-button{min-height:42px}
+#google-auth-status.success{color:#216b4b}
+#google-auth-status.error{color:#a43d4b}
+.form-divider{text-align:center;color:#887b89;font-size:12px;margin:14px 0}
