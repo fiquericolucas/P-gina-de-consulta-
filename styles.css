@@ -13,3 +13,75 @@
 
 /* Oferta de lançamento: preço anterior, desconto calculado e preço planejado. */
 .price-line{display:flex;align-items:center;gap:10px;margin:3px 0 1px}.price-line del{font-size:17px;color:#87918c;font-weight:700;text-decoration-thickness:2px}.discount-badge{display:inline-flex;align-items:center;border-radius:7px;padding:5px 8px;background:#fff0e9;color:#b74728;font-size:11px;font-weight:900;letter-spacing:.3px}.price-box strong{display:block}.price-box .tag{max-width:135px;text-align:center;line-height:1.45}
+
+
+/* Redesign visual: linguagem de produto de relacionamento, sem simular consultas reais. */
+:root{
+ --ink:#241b35;--muted:#766d82;--green:#8b3f82;--pale:#f8e8f3;--line:#f0dce9;
+ --paper:#fff8fc;--white:#fff;--amber:#985d28;
+}
+body{background:linear-gradient(180deg,#fff7fb 0%,#fff 42%,#fff8fc 100%);color:var(--ink)}
+.topbar{max-width:1240px;padding-top:20px;padding-bottom:20px}
+.brand{font-size:22px;letter-spacing:-.8px}
+.brand-mark{width:42px;height:42px;border-radius:15px;background:linear-gradient(135deg,#f05b91,#8b3f82);box-shadow:0 8px 22px #d85a9238}
+.plus{color:#e34f8c}
+.top-nav{gap:26px}
+.nav-link,footer>a:last-child{font-weight:700;color:#75677d}
+.nav-link:hover,footer>a:last-child:hover{color:#d74783}
+.hero{max-width:1240px;margin:28px auto 76px;gap:54px}
+.hero-copy{position:relative}
+.eyebrow{color:#b23d7c;letter-spacing:1.7px}
+.dot{background:#ed5b91;box-shadow:0 0 0 5px #fce4ef}
+h1{font-size:clamp(46px,5.7vw,74px);letter-spacing:-3.7px;line-height:1.01}
+.hero h1 span{background:linear-gradient(90deg,#ed568e,#8b3f82);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:#766b7e;max-width:550px}
+.price-box{padding:17px 19px;border:1px solid #f2d9e7;border-radius:18px;background:linear-gradient(135deg,#fff,#fff2f8);width:max-content;max-width:100%;box-shadow:0 12px 35px #9d397a0b}
+.tag{color:#9c3474;background:#fbe5f1;border-radius:999px}
+.button{background:linear-gradient(100deg,#ed5a91,#a3428a);border-radius:999px;padding:15px 23px;box-shadow:0 10px 24px #d64c8730;transition:transform .18s ease,box-shadow .18s ease}
+.button:hover{filter:none;transform:translateY(-2px);box-shadow:0 14px 28px #d64c8740}
+.trust{color:#74697b}
+.preview-card,.form-card{border:1px solid #f1dce9;border-radius:26px;box-shadow:0 22px 70px #7e326d12}
+.preview-card{padding:28px;background:linear-gradient(150deg,#fff 0%,#fff8fc 100%)}
+.card-heading{padding-bottom:16px;border-bottom:1px solid #f4e4ed}
+.card-heading small{color:#a64c82}
+.card-heading h2{font-size:21px}
+.shield{background:linear-gradient(135deg,#fce3ef,#f0e4fa);color:#a23e80;border-radius:15px}
+.platform{padding:16px 3px;border-color:#f4e8ef}
+.platform-icon{width:43px;height:43px;border-radius:15px}
+.badge{border-radius:999px;background:#fff0e5;color:#9b6338;padding:6px 10px}
+.notice{background:#fff0f6;border:1px solid #f8dce9;border-radius:14px;color:#786779;padding:15px}
+.notice b{color:#c04482}
+.how{background:linear-gradient(180deg,#fff0f7,#fff8fc);padding:78px 26px}
+.section-title h2,.consult h2{letter-spacing:-1.8px}
+.steps article{border:1px solid #f0dce9;border-radius:20px;box-shadow:0 12px 35px #8b3f8208}
+.steps article>span{color:#c04482}
+.consult{max-width:1120px}
+.consult ul{line-height:2.1}
+.form-card{padding:28px}
+.segmented span{border-radius:999px}
+.segmented input:checked+span{border-color:#d85b96;background:#fff0f6;color:#a43d7b}
+input[type=email],input[type=tel],.review-form input[type=text],.review-form textarea{border-color:#eadce6;border-radius:13px}
+input:focus,.review-form input:focus,.review-form textarea:focus{border-color:#d85b96;box-shadow:0 0 0 4px #d85b9618}
+.consent input{accent-color:#b44383}
+.form-message.success{background:#f1fbf5;color:#216b4b;border-color:#cdebd9}
+.reviews{background:#fff}
+.review-card,.rating-summary,.review-item{border-color:#f0dce9;border-radius:20px}
+.review-symbol{background:#fce6f1;color:#c04482;border-radius:14px}
+.review-label{background:#fff0f6;color:#a43d7b;border-radius:999px}
+.rating-stars,.review-item-stars,.star-options label:hover span,.star-options label:hover~label span,.star-options input:checked~span,.star-options label:has(input:checked) span,.star-options label:has(input:checked)~label span{color:#e5a13b}
+.disclaimer{border-color:#f1e3d5;border-radius:16px;background:#fffaf4}
+.disclaimer b{color:#885a2b}
+footer{border-color:#f0dce9}
+@media(max-width:800px){
+ .hero{margin-top:20px}
+ .preview-card{border-radius:22px}
+ .top-nav{gap:14px}
+}
+@media(max-width:450px){
+ .topbar{padding:15px 18px}
+ .brand{font-size:19px}
+ .hero h1{font-size:45px;letter-spacing:-2.6px}
+ .price-box{width:100%;gap:10px}
+ .preview-card,.form-card{padding:20px;border-radius:20px}
+ .top-nav{gap:10px}
+}
