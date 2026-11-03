@@ -11,7 +11,8 @@ export default function handler(req, res) {
     mode: 'prototype',
     liveLookupsEnabled: false,
     paymentsEnabled: false,
-    googleIdentityVerification: Boolean(process.env.GOOGLE_CLIENT_ID),\n    integrations: {
+    googleIdentityVerification: Boolean(process.env.GOOGLE_CLIENT_ID),
+    integrations: {
       tinder: 'unavailable',
       badoo: 'unavailable',
       bumble: 'unavailable',
