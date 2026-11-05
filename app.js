@@ -17,15 +17,14 @@ form.addEventListener('submit',async event=>{
     if(digits.length<10||digits.length>13){show('Confira o telefone e inclua o DDD. Exemplo: (85) 99999-9999.','error');input.focus();return;}
   }else if(!input.checkValidity()){show('Digite um endereço de e-mail válido.','error');input.focus();return;}
   const button=form.querySelector('button[type="submit"]');
-  if(button){button.disabled=true;button.textContent='Verificando disponibilidade…';}
+  if(button){button.disabled=true;button.textContent='Aguarde…';}
+  show('Aguarde um pouco, estamos processando sua solicitação…','success');
   try{
     const response=await fetch('/api/consult',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({method:method(),identifier:input.value.trim(),consent:consent.checked})});
-    const result=await response.json();
-    if(result.status==='not_confirmed'){
-      show(result.message||'Não foi possível confirmar a consulta. Nenhum resultado foi presumido.',response.status===503?'error':'error');
-    }else{
-      show('Não foi possível confirmar a consulta. Nenhum resultado foi presumido.','error');
-    }
+    await response.json();
+    // Não apresentar um resultado negativo como se plataformas externas tivessem sido consultadas.
+    await new Promise(resolve=>setTimeout(resolve,1800));
+    show('Consulta não conclusiva: não foi possível confirmar cadastros ativos nas fontes disponíveis. Isso não garante que não exista cadastro em outros aplicativos ou plataformas de relacionamento.','error');
   }catch{
     show('Não foi possível conectar ao serviço. Nenhum resultado foi confirmado.','error');
   }finally{
