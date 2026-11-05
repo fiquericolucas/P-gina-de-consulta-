@@ -95,7 +95,7 @@ if(googleButton&&googleStatus){
     }catch{setGoogleStatus('Falha de conexão ao validar com o servidor. Tente novamente.','error');}
   };
   fetch('/api/auth/google-config').then(r=>r.json()).then(config=>{
-    if(!config.clientId){setGoogleStatus('Integração preparada. Falta cadastrar GOOGLE_CLIENT_ID nas variáveis da Vercel.');return;}
+    if(!config.clientId){googleButton.closest('.google-verification')?.setAttribute('hidden','');document.querySelector('.form-divider')?.setAttribute('hidden','');return;}
     const script=document.createElement('script');script.src='https://accounts.google.com/gsi/client';script.async=true;script.defer=true;
     script.onload=()=>{
       if(!window.google?.accounts?.id){setGoogleStatus('Não foi possível carregar o serviço de autenticação Google.','error');return;}
