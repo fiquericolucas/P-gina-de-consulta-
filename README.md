@@ -9,7 +9,7 @@ Site estático em HTML, CSS e JavaScript, com endpoints serverless mínimos para
 - Endpoint de saúde: `GET /api/health`.
 - Endpoint de consulta: `POST /api/consult`; responde HTTP 503 `LOOKUP_NOT_CONFIGURED` intencionalmente.
 - Consulta real a Tinder, Badoo, Bumble ou Inner Circle: **não implementada**.
-- Pagamento de R$ 14,90: **não implementado**.
+- Preço exibido na interface: **R$ 24,90**; pagamento: **não implementado**.
 - Login Google (OpenID Connect) com validação server-side do ID token: código integrado; depende de `GOOGLE_CLIENT_ID` na Vercel e configuração do OAuth no Google Cloud. Não cria sessão nem armazena contatos.\n- Banco de dados, autenticação persistente e armazenamento de contatos: **não configurados**.
 
 O endpoint de consulta não aceita nem armazena identificadores. Não interprete a resposta 503 como ausência ou presença de cadastro. O serviço só poderá produzir resultados quando houver fonte oficial/expressamente autorizada, contrato e testes que sustentem a consulta.
