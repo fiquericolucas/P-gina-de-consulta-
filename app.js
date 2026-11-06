@@ -107,4 +107,45 @@ if(googleButton&&googleStatus){
     document.head.appendChild(script);
   }).catch(()=>setGoogleStatus('Não foi possível carregar a configuração do Google.','error'));
 }
+/* Questionário: mede apenas a percepção de confiança relatada pela pessoa. */
+const quizForm=document.getElementById('trust-quiz');
+if(quizForm){
+ const questions=[
+ 'Vocês conseguem conversar com sinceridade sobre assuntos importantes?',
+ 'Você sente que suas preocupações são ouvidas e levadas a sério?',
+ 'As atitudes e os combinados entre vocês costumam ser coerentes?',
+ 'Vocês conseguem falar sobre limites e expectativas sem medo de humilhação?',
+ 'Existe espaço para cada pessoa ter privacidade e também agir com transparência?',
+ 'Vocês reservam momentos de qualidade para estar juntos?',
+ 'Quando acontece um desentendimento, conseguem conversar e buscar uma solução?',
+ 'Você sente respeito mesmo quando vocês discordam?',
+ 'Demonstrações de carinho e interesse acontecem de forma recíproca?',
+ 'Quando um problema é apontado, os dois mostram disposição para melhorar?'
+ ];
+ const choices=[{label:'Na maioria das vezes',value:2},{label:'Às vezes',value:1},{label:'Raramente ou nunca',value:0}];
+ const box=document.getElementById('quiz-question'),label=document.getElementById('quiz-progress-label'),bar=document.getElementById('quiz-progress-bar'),next=document.getElementById('quiz-next'),back=document.getElementById('quiz-back'),result=document.getElementById('trust-result'),given=Array(10).fill(null);
+ let current=0;
+ function render(){
+  label.textContent='Pergunta '+(current+1)+' de 10';bar.style.width=((current+1)*10)+'%';box.replaceChildren();
+  const n=document.createElement('div');n.className='quiz-number';n.textContent='PERGUNTA '+String(current+1).padStart(2,'0');
+  const title=document.createElement('h3');title.className='quiz-question-title';title.textContent=questions[current];
+  const opts=document.createElement('div');opts.className='quiz-options';
+  choices.forEach(choice=>{const l=document.createElement('label');l.className='quiz-option';const r=document.createElement('input');r.type='radio';r.name='answer';r.checked=given[current]===choice.value;r.addEventListener('change',()=>{given[current]=choice.value;next.disabled=false;});const t=document.createElement('span');t.textContent=choice.label;l.append(r,t);opts.append(l);});
+  box.append(n,title,opts);next.disabled=given[current]===null;next.textContent=current===9?'Ver meu resultado →':'Próxima pergunta →';back.disabled=current===0;
+ }
+ function finish(){
+  const score=Math.round(given.reduce((a,b)=>a+b,0)/20*100);
+  document.getElementById('trust-score').textContent=score+'%';document.getElementById('trust-meter').style.width=score+'%';
+  let title,description,tips,boundary;
+  if(score>=80){title='Percepção de confiança elevada';description='Suas respostas indicam que você percebe diálogo, respeito e cooperação com frequência. É um bom sinal da dinâmica que você relata, mas a confiança precisa ser cuidada continuamente.';tips=['Continuem conversando sobre expectativas e limites, mesmo quando tudo estiver bem.','Reconheçam atitudes positivas e reservem tempo de qualidade juntos.','Revisem os combinados quando a rotina ou as necessidades mudarem.'];boundary='Confiança não exige abrir mão da privacidade individual: transparência saudável é construída por acordo, não por vigilância.';}
+  else if(score>=55){title='Há pontos que merecem atenção';description='Você relata aspectos positivos, mas também situações em que a comunicação ou a conexão poderiam melhorar. Vale conversar sobre exemplos concretos, sem acusações.';tips=['Escolha um momento tranquilo e explique como situações específicas fazem você se sentir.','Façam um combinado pequeno e realista para a próxima semana, como um momento de conversa sem distrações.','Depois, conversem sobre o que funcionou e o que cada um ainda precisa.'];boundary='Observe se existe esforço recíproco e consistente. Uma conversa difícil isolada não define a relação; padrões repetidos merecem atenção.';}
+  else{title='Sua percepção de confiança está baixa';description='Suas respostas mostram que você não está se sentindo ouvido(a), respeitado(a) ou seguro(a) em vários aspectos. Isso merece cuidado, independentemente de existir ou não infidelidade.';tips=['Identifique comportamentos concretos que estão afetando você, sem presumir intenções.','Expresse o que precisa e proponha mudanças realistas e recíprocas.','Defina limites saudáveis e observe se há responsabilidade e atitudes consistentes dos dois lados.','Se as conversas não avançam, considere apoio de terapia individual ou de casal.'];boundary='Se, após conversas claras e combinados razoáveis, nada muda repetidamente, isso pode indicar um problema não resolvido na dinâmica, indisponibilidade para construir a relação ou limites incompatíveis. Não prova traição. Você pode decidir o que é aceitável para si.';}
+  document.getElementById('trust-band').textContent=title;document.getElementById('trust-explanation').textContent=description;const ul=document.getElementById('trust-advice');ul.replaceChildren();tips.forEach(t=>{const li=document.createElement('li');li.textContent=t;ul.append(li);});document.getElementById('trust-boundary').textContent=boundary;quizForm.hidden=true;result.hidden=false;result.scrollIntoView({behavior:'smooth',block:'start'});
+ }
+ next.addEventListener('click',()=>{if(given[current]===null)return;if(current<9){current++;render();}else finish();});
+ back.addEventListener('click',()=>{if(current>0){current--;render();}});
+ document.getElementById('quiz-restart').addEventListener('click',()=>{given.fill(null);current=0;result.hidden=true;quizForm.hidden=false;render();quizForm.scrollIntoView({behavior:'smooth',block:'start'});});
+ render();
+}
+
 })();
