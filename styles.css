@@ -111,3 +111,12 @@ footer{border-color:#f0dce9}
 .advice-box{background:#fff7fb;border:1px solid #f2dce9;border-radius:16px;padding:20px;margin:18px 0}.advice-box h3{margin:0 0 10px;font-size:17px;color:#8b3f82}.advice-box ul{margin:0;padding-left:20px;color:#62566a;font-size:13px;line-height:1.9}.advice-box p{font-size:13px;line-height:1.75;color:#62566a;margin:12px 0 0}
 .result-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.button-secondary{background:#fff;color:#9b3e80;border:1px solid #e9cadd;box-shadow:none}.result-disclaimer{font-size:10px!important;color:#95899a!important;border-top:1px solid #f1e5ed;padding-top:14px;margin-top:20px}
 @media(max-width:600px){.trust-test{padding:58px 18px}.quiz-card,.trust-result{padding:20px;border-radius:19px}.quiz-question-title{font-size:20px}.quiz-actions .button,.quiz-back{padding:12px 15px;font-size:12px}.result-actions{flex-direction:column}.result-actions .button{width:100%}.result-score strong{font-size:54px}}
+
+
+/* International dating platform logo grid */
+.platform-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:22px 0}
+.platform-logo{display:flex;align-items:center;gap:12px;min-height:68px;padding:12px 14px;border:1px solid rgba(20,30,50,.10);border-radius:14px;background:#fff;color:inherit;text-decoration:none;transition:transform .18s ease,box-shadow .18s ease}
+.platform-logo:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(20,30,50,.09)}
+.platform-logo img{width:30px;height:30px;object-fit:contain}
+.platform-logo b{font-size:14px}
+@media(max-width:520px){.platform-grid{gap:8px}.platform-logo{padding:10px;gap:8px}.platform-logo b{font-size:12px}.platform-logo img{width:26px;height:26px}}
