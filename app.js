@@ -148,4 +148,43 @@ if(quizForm){
  render();
 }
 
+
+/* Consultora conversacional: mensagens processadas no servidor, sem histórico persistente. */
+const chatForm=document.getElementById('relationship-chat-form');
+if(chatForm){
+ const log=document.getElementById('relationship-chat-log');
+ const input=document.getElementById('relationship-chat-input');
+ const consent=document.getElementById('relationship-chat-consent');
+ const status=document.getElementById('relationship-chat-status');
+ const send= document.getElementById('relationship-chat-send');
+ const history=[];
+ const addMessage=(text,role)=>{
+  const bubble=document.createElement('div');
+  bubble.className='chat-bubble '+(role==='assistant'?'assistant':'user');
+  bubble.textContent=text;
+  log.append(bubble);log.scrollTop=log.scrollHeight;
+ };
+ chatForm.addEventListener('submit',async event=>{
+  event.preventDefault();
+  const message=input.value.trim();
+  if(!message||!consent.checked)return;
+  if(message.length>1600){status.textContent='A mensagem deve ter até 1.600 caracteres.';return;}
+  addMessage(message,'user');
+  history.push({role:'user',content:message});
+  input.value='';send.disabled=true;send.textContent='Pensando…';status.textContent='A consultora está analisando sua mensagem…';
+  try{
+   const response=await fetch('/api/relationship-chat',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({messages:history.slice(-12)})});
+   const data=await response.json();
+   if(!response.ok)throw new Error(data.message||'Não foi possível responder agora.');
+   const answer=String(data.reply||'Não consegui formular uma resposta. Tente novamente.').slice(0,7000);
+   addMessage(answer,'assistant');history.push({role:'assistant',content:answer});
+   status.textContent='Resposta gerada. A conversa não fica salva pelo Verifica+.';
+  }catch(error){
+   history.pop();
+   status.textContent=error.message||'Falha ao conectar à consultora.';
+   addMessage(status.textContent,'assistant');
+  }finally{send.disabled=false;send.textContent='Enviar mensagem →';}
+ });
+}
+
 })();
