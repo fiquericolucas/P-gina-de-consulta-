@@ -120,3 +120,18 @@ footer{border-color:#f0dce9}
 .platform-logo img{width:30px;height:30px;object-fit:contain}
 .platform-logo b{font-size:14px}
 @media(max-width:520px){.platform-grid{gap:8px}.platform-logo{padding:10px;gap:8px}.platform-logo b{font-size:12px}.platform-logo img{width:26px;height:26px}}
+\n
+/* Verifica+ Inteligência — avaliação guiada responsiva */
+.relationship-ai{padding:76px 26px;background:#edf5f0}
+.ai-panel{max-width:850px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:0 18px 55px #153c2a0b}
+.ai-intro{display:flex;align-items:center;gap:13px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.ai-avatar{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:var(--green);color:#fff;font-weight:900}
+.ai-intro>div{display:flex;flex-direction:column;flex:1}.ai-intro b{font-size:14px}.ai-intro small{font-size:11px;color:var(--muted)}
+.ai-status{font-size:9px;letter-spacing:1px;font-weight:900;color:var(--green);background:var(--pale);padding:7px 9px;border-radius:7px}
+.ai-disclaimer{padding:13px 15px;border-radius:10px;background:#fff8e9;color:#76551b;font-size:12px;line-height:1.65}
+.ai-question{margin:20px 0}.ai-question label{display:block;font-size:13px;font-weight:800;margin-bottom:8px}.ai-question select{width:100%;padding:13px;border:1px solid #dce5df;border-radius:9px;background:#fff;color:var(--ink);font:inherit;font-size:13px}.ai-question small{display:block;color:var(--muted);font-size:11px;margin-top:7px}
+.ai-consent{display:flex;gap:10px;align-items:flex-start;color:var(--muted);font-size:11px;margin:22px 0}.ai-consent input{margin-top:3px;accent-color:var(--green)}
+.relationship-result{margin-top:25px;padding-top:22px;border-top:1px solid var(--line)}.relationship-result h3{font-size:24px;letter-spacing:-.7px;margin:10px 0}.relationship-result>p{font-size:13px;line-height:1.75;color:var(--muted)}
+.ai-result-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}.ai-result-grid>div,.ai-next-steps{padding:17px;border:1px solid var(--line);border-radius:12px;background:var(--paper)}.ai-result-grid b{font-size:12px}.ai-result-grid ul,.ai-next-steps ol{padding-left:19px;color:var(--muted);font-size:12px;line-height:1.8}.ai-next-steps h4{margin:0;font-size:14px}.ai-final-note{padding:13px;background:#fff8e9;border-radius:9px}
+.button-secondary{background:#e8f3ed;color:var(--green);border:1px solid #cfe3d7}
+@media(max-width:600px){.relationship-ai{padding:55px 18px}.ai-panel{padding:19px}.ai-result-grid{grid-template-columns:1fr}.ai-status{font-size:8px;padding:6px}}
