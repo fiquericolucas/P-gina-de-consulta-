@@ -187,4 +187,43 @@ if(chatForm){
  });
 }
 
+
+/* Análise contextual local: índice de atenção, nunca probabilidade de traição. */
+const assessment=document.getElementById('relationship-assessment');
+if(assessment){
+ const result=document.getElementById('relationship-result');
+ const val=id=>document.getElementById(id)?.value||'';
+ const fill=(id,items)=>{const el=document.getElementById(id);if(!el)return;el.replaceChildren();items.forEach(s=>{const li=document.createElement('li');li.textContent=s;el.append(li);});};
+ assessment.addEventListener('submit',e=>{
+  e.preventDefault();if(!assessment.reportValidity())return;
+  const change=val('context-change'),freq=val('context-frequency'),talk=val('context-transparency'),agreement=val('context-agreement'),phone=val('context-phone'),impact=val('context-impact');
+  let score=0;
+  if(change==='1'||change==='2')score++;
+  if(change==='3')score+=2;
+  if(freq==='1')score++;if(freq==='2')score+=2;
+  if(talk==='2')score++;if(talk==='3')score+=2;
+  if(agreement==='3')score+=2;
+  if(phone==='3')score++;
+  const safety=impact==='3';
+  const heading=safety?'Sua segurança merece prioridade':score>=6?'Vários pontos merecem esclarecimento':score>=3?'Alguns sinais merecem atenção':'Poucos sinais concretos foram relatados';
+  const summary=safety?'Você indicou medo ou insegurança. Evite confronto se isso puder aumentar o risco; procure alguém de confiança e priorize sua segurança.':score>=6?'Há várias situações relatadas que merecem esclarecimento cuidadoso. Isso não comprova infidelidade.':score>=3?'Algumas mudanças justificam uma conversa clara, considerando frequência e contexto. Não são prova de infidelidade.':'As respostas indicam poucos elementos concretos. A sua preocupação merece atenção, mas não deve ser tratada como prova.';
+  const signals=[];
+  if(change==='1'||change==='2')signals.push('Mudança de rotina ou distanciamento relatado.');
+  if(change==='3'||talk==='3')signals.push('Explicações percebidas como contraditórias.');
+  if(freq==='1')signals.push('Situação relatada algumas vezes nas últimas semanas.');
+  if(freq==='2')signals.push('Padrão relatado como recorrente há meses.');
+  if(talk==='2')signals.push('Dificuldade repetida para conversar sobre o assunto.');
+  if(agreement==='3')signals.push('Acordos do casal que, segundo seu relato, não estão sendo respeitados.');
+  if(phone==='3')signals.push('Segredo novo acompanhado de outras mudanças; celular isoladamente não é evidência.');
+  if(!signals.length)signals.push('Ainda faltam comportamentos concretos e contextualizados.');
+  const alternatives=['Estresse, trabalho, saúde emocional ou mudanças pessoais podem alterar a rotina.','Privacidade com o celular não significa, por si só, ocultação ou infidelidade.','Expectativas e limites que nunca foram combinados podem gerar conflitos.','Uma situação isolada pode ter explicação diferente de um padrão recorrente.'];
+  const steps=safety?['Não confronte a pessoa se isso puder colocar você em risco.','Procure alguém de confiança e planeje como manter sua segurança.','Se houver perigo imediato, procure os serviços de emergência da sua região.']:['Registre para si fatos observáveis e datas aproximadas, sem vigiar ou invadir privacidade.','Escolha um momento tranquilo e faça perguntas abertas sobre os pontos que precisam de esclarecimento.','Conversem sobre limites e acordos recíprocos.','Observe diálogo, coerência e esforço mútuo ao longo do tempo.'];
+  document.getElementById('relationship-heading').textContent=heading;
+  document.getElementById('relationship-summary').textContent=summary;
+  fill('relationship-signals',signals);fill('relationship-alternatives',alternatives);fill('relationship-steps',steps);
+  document.getElementById('relationship-note').textContent='Índice interno de atenção: '+score+'/8. Resume somente suas respostas; não é pontuação de traição, não verifica fatos externos e não avalia a outra pessoa. Respostas processadas apenas nesta sessão.';
+  result.hidden=false;result.scrollIntoView({behavior:'smooth',block:'start'});
+ });
+ document.getElementById('relationship-restart')?.addEventListener('click',()=>{assessment.reset();result.hidden=true;assessment.scrollIntoView({behavior:'smooth',block:'start'});});
+}
 })();
