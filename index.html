@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Verifica+ — uma consultora de relacionamento com IA para organizar fatos, refletir sobre confiança e encontrar próximos passos.">
-<meta name="theme-color" content="#101a31"><title>Verifica+ | Clareza para o seu relacionamento</title>
+<meta name="theme-color" content="#fff7fb"><meta property="og:title" content="Verifica+ | Clareza para o seu relacionamento"><meta property="og:description" content="Organize fatos, sentimentos e dúvidas com apoio de uma consultora de IA."><meta name="robots" content="index,follow"><title>Verifica+ | Clareza para o seu relacionamento</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="stylesheet" href="/styles.css">
 </head>
 <body class="verifica-app">
-<header class="topbar"><a class="brand" href="/" aria-label="Verifica+ início"><span class="brand-mark">V+</span><span>verifica<span class="plus">+</span></span></a><a class="nav-link" href="#como-funciona">Como funciona</a></header>
+<header class="topbar"><a class="brand" href="/" aria-label="Verifica+ início"><span class="brand-mark">V+</span><span>verifica<span class="plus">+</span></span></a><nav class="top-nav"><a class="nav-link" href="#como-funciona">Como funciona</a><a class="nav-link" href="#duvidas">Dúvidas</a></nav></header>
 <main>
 <section class="hero hero-chat">
 <div class="hero-copy"><span class="eyebrow"><span class="dot"></span> CLAREZA, CONTEXTO E ACOLHIMENTO</span>
-<h1>Sente seu parceiro ou parceira distante? <span>Acha que está tendo um caso com outra pessoa?</span></h1>
-<p class="lead">Descubra se há perfis publicamente identificáveis associados a um contato que você tem autorização para consultar. Depois, converse com nossa consultora de IA para analisar sua situação com mais clareza.</p>
-<div class="price-box"><div><small>Acesso à análise personalizada</small><strong>R$ 24,90 <span>/ acesso</span></strong></div><span class="tag">PAGAMENTO EM CONFIGURAÇÃO</span></div>
-<a class="button" href="#consulta">Consultar agora <span aria-hidden="true">→</span></a> <a class="secondary-cta" href="#inteligencia">Conhecer a consultora IA</a>
+<h1>Quando a confiança fica abalada, <span>clareza faz diferença.</span></h1>
+<p class="lead">Organize o que aconteceu, diferencie fatos de suspeitas e reflita sobre seus próximos passos com uma orientação acolhedora — sem invasão de privacidade e sem julgamentos.</p>
+<div class="price-box"><div><small>Preço planejado para o lançamento</small><strong>R$ 24,90 <span>/ acesso</span></strong></div><span class="tag">CHECKOUT EM CONFIGURAÇÃO</span></div>
+<a class="button" href="#consulta">Conhecer a experiência <span aria-hidden="true">→</span></a> <a class="secondary-cta" href="#inteligencia">Conhecer a consultora IA</a>
 <div class="trust"><span>✓ Consulta com autorização</span><span>✓ Sem pedir senhas</span><span>✓ Orientação sem julgamentos</span></div>
 </div>
 <div class="preview-card intro-card"><div class="card-heading"><div><small>VERIFICA+ INTELIGÊNCIA</small><h2>Consulta + orientação em um só lugar</h2></div><span class="shield">V+</span></div>
@@ -29,7 +29,7 @@
   <span class="eyebrow">CONSULTA DE PERFIS</span>
   <h2>Sente seu parceiro ou parceira distante? Acha que está tendo um caso com outra pessoa?</h2>
   <p class="lookup-lead"><strong>Descubra se o seu próprio telefone ou e-mail — ou um contato cujo titular autorizou a consulta — aparece associado a perfis publicamente identificáveis em sites de relacionamento.</strong></p>
-  <p>Informe um número de telefone ou e-mail autorizado. A consulta só poderá apresentar resultados quando houver uma fonte pública ou integração oficial disponível. Não acessamos contas privadas nem confirmamos cadastros por métodos ocultos.</p>
+  <p>Informe um número de telefone ou e-mail autorizado. <strong>Neste protótipo, nenhuma plataforma externa está conectada e nenhuma consulta real é realizada.</strong> Não acessamos contas privadas nem confirmamos cadastros por métodos ocultos.</p>
   <div class="platform-grid" aria-label="Plataformas de relacionamento contempladas">
    <div class="platform-tile"><span class="brand-logo tinder-logo" aria-hidden="true">🔥</span><span>Tinder</span></div>
    <div class="platform-tile"><span class="brand-logo badoo-logo" aria-hidden="true">b</span><span>Badoo</span></div>
@@ -46,17 +46,17 @@
   <input id="lookup-identifier" name="identifier" type="tel" inputmode="tel" autocomplete="off" maxlength="254" placeholder="(00) 00000-0000" required>
   <label class="lookup-consent"><input type="checkbox" id="lookup-consent" required><span>Confirmo que sou titular deste contato ou tenho autorização válida e explícita do titular para esta consulta.</span></label>
   <button class="button full" id="lookup-submit" type="submit">Verificar disponibilidade da consulta →</button>
-  <div class="lookup-progress" id="lookup-progress" hidden aria-live="polite"><div class="scan-orb"><span></span></div><strong>Estamos pesquisando…</strong><small>Verificando a disponibilidade das fontes autorizadas.</small></div>
-  <p class="lookup-result" id="lookup-result" role="status" aria-live="polite">A consulta depende de fontes públicas e integrações oficiais. Nenhuma plataforma está conectada neste momento.</p>
+  <div class="lookup-progress" id="lookup-progress" hidden aria-live="polite"><div class="scan-orb"><span></span></div><strong>Verificando a solicitação…</strong><small>Checando se existe uma integração autorizada disponível.</small></div>
+  <p class="lookup-result" id="lookup-result" role="status" aria-live="polite">Demonstração: as plataformas exibidas são apenas referências visuais. A consulta real será habilitada somente após integração oficial e validação de autorização.</p>
  </form>
 </section>
 
 <section class="relationship-ai" id="inteligencia">
 <div class="section-title"><span class="eyebrow">SUA CONSULTORA PARTICULAR</span><h2>Vamos conversar sobre seu relacionamento?</h2><p>A IA fará perguntas conforme entender sua história. Quanto mais contexto você compartilhar, mais útil poderá ser a reflexão — sem precisar informar nomes ou dados pessoais.</p></div>
 <div class="ai-panel">
-<div class="ai-intro"><span class="ai-avatar">V+</span><div><b>Consultora Verifica+</b><small>Orientação emocional e análise contextual</small></div><span class="ai-status">IA CONVERSACIONAL</span></div>
+<div class="ai-intro"><span class="ai-avatar">V+</span><div><b>Consultora Verifica+</b><small>Orientação emocional e análise contextual</small></div><span class="ai-status">RECURSO EM CONFIGURAÇÃO</span></div>
 <div class="relationship-chat" id="relationship-chat">
-<div class="chat-heading"><div><b>Sua conversa</b><small>Uma pergunta de cada vez, no seu ritmo</small></div><span class="chat-live">ONLINE*</span></div>
+<div class="chat-heading"><div><b>Sua conversa</b><small>Uma pergunta de cada vez, no seu ritmo</small></div><span class="chat-live">DISPONIBILIDADE CONDICIONAL</span></div>
 <div class="chat-privacy">As mensagens são enviadas ao serviço de IA quando você envia. Não inclua nomes completos, telefones, endereços, senhas ou informações que identifiquem outras pessoas.</div>
 <div id="relationship-chat-log" class="chat-log" role="log" aria-live="polite"><div class="chat-bubble assistant">Olá! Estou aqui para ouvir você sem julgamentos. Vou ajudar a separar fatos de suspeitas, entender os acordos do relacionamento e pensar em formas seguras de esclarecer suas dúvidas. O que aconteceu para você procurar orientação?</div></div>
 <form id="relationship-chat-form" class="chat-form">
@@ -79,7 +79,7 @@
 </div>
 </section>
 <section class="how" id="como-funciona"><div class="section-title"><span class="eyebrow">SIMPLES E TRANSPARENTE</span><h2>Como funciona</h2><p>Uma conversa natural, uma leitura contextual e orientações para que você decida com mais clareza.</p></div><div class="steps"><article><span>01</span><h3>Conte sua história</h3><p>Explique o que aconteceu e como isso afeta você.</p></article><article><span>02</span><h3>Explore os sinais</h3><p>A IA considera frequência, contexto, acordos e outras explicações possíveis.</p></article><article><span>03</span><h3>Tire suas conclusões</h3><p>Receba um resumo, pontos a esclarecer e próximos passos saudáveis.</p></article></div></section>
-<section class="disclaimer"><b>Transparência importante</b><p>O Verifica+ não acessa celulares, mensagens, localização, redes sociais ou contas de terceiros. O índice representa pontos de atenção presentes no relato, não a probabilidade de traição. A IA pode interpretar informações de forma incompleta; use a análise como apoio à reflexão, não como veredito.</p></section>
+<section class="faq-section" id="duvidas"><div class="section-title"><span class="eyebrow">RESPOSTAS DIRETAS</span><h2>Perguntas frequentes</h2><p>Transparência antes de qualquer decisão.</p></div><div class="faq-list"><details><summary>O Verifica+ confirma uma traição?</summary><p>Não. Nenhuma ferramenta consegue concluir isso com segurança a partir de um contato ou de um relato. O Verifica+ foi pensado para ajudar você a organizar fatos e refletir sobre a situação.</p></details><details><summary>A consulta às plataformas já funciona?</summary><p>Não nesta versão. Tinder, Badoo, Bumble e outras marcas são referências visuais. Não há integração ativa nem acesso a cadastros dessas plataformas.</p></details><details><summary>O serviço já aceita pagamento?</summary><p>Ainda não. R$ 24,90 é o preço planejado. O checkout será habilitado após configuração e testes.</p></details><details><summary>Preciso informar dados pessoais?</summary><p>Não compartilhe nomes completos, documentos, senhas, telefones de terceiros ou detalhes que identifiquem outras pessoas. Use apenas informações próprias ou para as quais tenha autorização válida.</p></details><details><summary>A consultora de IA está disponível?</summary><p>A experiência depende da ativação do serviço de IA no servidor. Quando estiver ativa, as mensagens enviadas serão processadas por um fornecedor de IA, conforme o aviso de privacidade.</p></details></div></section><section class="disclaimer"><b>Transparência importante</b><p>O Verifica+ não acessa celulares, mensagens, localização, redes sociais ou contas de terceiros. O índice representa pontos de atenção presentes no relato, não a probabilidade de traição. A IA pode interpretar informações de forma incompleta; use a análise como apoio à reflexão, não como veredito.</p></section>
 </main>
-<footer><a class="brand" href="/"><span class="brand-mark">V+</span><span>verifica<span class="plus">+</span></span></a><span>Orientação sobre relacionamentos com IA</span><a href="/privacy.html">Privacidade</a></footer>
+<footer><a class="brand" href="/"><span class="brand-mark">V+</span><span>verifica<span class="plus">+</span></span></a><span>Protótipo em desenvolvimento · orientação com responsabilidade</span><a href="/privacy.html">Privacidade</a></footer>
 <script src="/app.js" defer></script></body></html>
