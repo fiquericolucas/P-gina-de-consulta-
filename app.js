@@ -13,9 +13,9 @@ if(lookupForm){
  lookupForm.addEventListener('submit',async event=>{
   event.preventDefault();
   if(!document.getElementById('lookup-consent').checked)return;
-  submit.disabled=true;submit.textContent='Pesquisando…';result.className='lookup-result';result.textContent='';const progress=document.getElementById('lookup-progress');progress.hidden=false;
+  submit.disabled=true;submit.textContent='Enviando…';result.className='lookup-result';result.textContent='';const progress=document.getElementById('lookup-progress');progress.hidden=false;
   try{
-   await new Promise(resolve=>setTimeout(resolve,1800));
+   
    const response=await fetch('/api/consult',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({method:method.value,identifier:identifier.value.trim(),consent:true})});
    const data=await response.json();
    if(!response.ok)throw new Error(data.message||'Não foi possível verificar os cadastros.');
