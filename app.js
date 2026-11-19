@@ -1,6 +1,29 @@
 (() => {
 'use strict';
 const chatForm=document.getElementById('relationship-chat-form');
+
+const lookupForm=document.getElementById('lookup-form');
+if(lookupForm){
+ const method=document.getElementById('lookup-method');
+ const identifier=document.getElementById('lookup-identifier');
+ const result=document.getElementById('lookup-result');
+ const submit=document.getElementById('lookup-submit');
+ const updateInput=()=>{identifier.type=method.value==='email'?'email':'tel';identifier.inputMode=method.value==='email'?'email':'tel';identifier.placeholder=method.value==='email'?'seuemail@exemplo.com':'(00) 00000-0000';};
+ method.addEventListener('change',updateInput);updateInput();
+ lookupForm.addEventListener('submit',async event=>{
+  event.preventDefault();
+  if(!document.getElementById('lookup-consent').checked)return;
+  submit.disabled=true;submit.textContent='Verificando…';result.className='lookup-result';result.textContent='Validando a disponibilidade da consulta…';
+  try{
+   const response=await fetch('/api/consult',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({method:method.value,identifier:identifier.value.trim(),consent:true})});
+   const data=await response.json();
+   if(!response.ok)throw new Error(data.message||'A consulta ainda não está disponível.');
+   result.className='lookup-result success';result.textContent=data.message||'Consulta recebida.';
+  }catch(error){result.className='lookup-result error';result.textContent=error.message||'Não foi possível concluir a solicitação.';}
+  finally{submit.disabled=false;submit.textContent='Verificar disponibilidade da consulta →';}
+ });
+}
+
 if(!chatForm)return;
 const log=document.getElementById('relationship-chat-log');
 const input=document.getElementById('relationship-chat-input');
