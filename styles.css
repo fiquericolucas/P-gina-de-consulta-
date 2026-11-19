@@ -188,3 +188,26 @@ footer{border-color:#f0dce9}
 .attention-footnote{border-top:1px solid #f1e5ed;padding-top:13px;margin:15px 0 0}
 .verifica-app .disclaimer{max-width:900px;margin:0 auto 55px}
 @media(max-width:650px){.attention-content{flex-direction:column;text-align:center;gap:15px}.attention-dimensions{grid-template-columns:repeat(2,minmax(0,1fr))}.attention-header{align-items:flex-start;flex-direction:column}.gauge{width:136px;height:136px;flex-basis:136px}.verifica-app .hero{padding-top:20px}}
+
+/* Consulta de perfis: formulário limitado a contato próprio ou autorizado. */
+.lookup-section{max-width:1188px;margin:0 auto 88px;padding:54px 30px;display:grid;grid-template-columns:1.08fr .92fr;gap:42px;align-items:center;background:linear-gradient(135deg,#fff0f7,#fff 65%);border:1px solid #f2dce9;border-radius:30px;box-shadow:0 22px 65px #8b3f820c}
+.lookup-copy h2{font-size:clamp(30px,3.5vw,43px);line-height:1.1;letter-spacing:-1.7px;margin:12px 0 16px}
+.lookup-lead{font-size:16px;line-height:1.7;color:#57465b}
+.lookup-copy>p:not(.lookup-lead){font-size:13px;line-height:1.7;color:var(--muted)}
+.platform-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:25px 0 17px}
+.platform-tile{min-height:94px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border:1px solid #f0dce9;border-radius:15px;background:#fff;font-size:12px;font-weight:800;color:#544358}
+.platform-tile img{width:34px;height:34px;object-fit:contain}
+.platform-wordmark .other-mark{width:34px;height:34px;display:grid;place-items:center;border-radius:50%;background:#f8e8f3;color:#a43d7b;font-size:25px}
+.lookup-disclaimer{font-size:11px;line-height:1.65;color:#796b7c;padding:12px 14px;border-radius:12px;background:#fff8ed;border:1px solid #f2e4d2}
+.lookup-form{padding:28px;background:#fff;border:1px solid #f0dce9;border-radius:23px;box-shadow:0 16px 45px #8b3f8210}
+.form-kicker{font-size:10px;letter-spacing:1.4px;font-weight:900;color:#b23d7c}
+.lookup-form h3{font-size:22px;line-height:1.2;letter-spacing:-.7px;margin:9px 0 20px}
+.lookup-form>label:not(.lookup-consent){display:block;font-size:12px;font-weight:800;margin:14px 0 7px}
+.lookup-form select,.lookup-form input:not([type=checkbox]){width:100%;padding:13px 14px;border:1px solid #eadce6;border-radius:12px;background:#fff;font:inherit;font-size:14px;color:var(--ink)}
+.lookup-consent{display:flex;align-items:flex-start;gap:9px;margin:17px 0;font-size:11px;line-height:1.55;color:var(--muted)}
+.lookup-consent input{margin-top:3px;accent-color:#b44383}
+.lookup-result{font-size:11px;line-height:1.6;color:#796b7c;margin:13px 0 0}
+.lookup-result.error{color:#a43d4b}.lookup-result.success{color:#216b4b}
+.secondary-cta{display:inline-block;margin-left:12px;color:#a43d7b;font-size:13px;font-weight:800;text-decoration:none}
+@media(max-width:850px){.lookup-section{margin:0 18px 65px;padding:28px 20px;grid-template-columns:1fr;gap:25px}.platform-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:460px){.platform-grid{grid-template-columns:repeat(2,1fr)}.lookup-form{padding:21px}.secondary-cta{display:block;margin:13px 0 0}}
