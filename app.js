@@ -18,7 +18,7 @@ const updateAssessment=(a)=>{
  const level=String(a.level||'insufficient');
  const labels={low:'Baixo',medium:'Médio',high:'Alto',insufficient:'Contexto insuficiente'};
  const gauge=document.getElementById('attention-gauge');
- gauge.style.setProperty('--score',score);
+ gauge.style.setProperty('--score',score);gauge.style.setProperty('--fill',level==='high'?'#d64f68':level==='medium'?'#d99a35':level==='low'?'#3a9b78':'#9d8fa0');
  document.getElementById('attention-score').textContent=score+'%';
  document.getElementById('attention-level').textContent='Nível '+(labels[level]||'em avaliação');
  document.getElementById('attention-state').textContent=labels[level]||'Em avaliação';
