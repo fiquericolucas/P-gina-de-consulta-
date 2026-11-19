@@ -31,9 +31,9 @@
   <p class="lookup-lead"><strong>Descubra se o seu próprio telefone ou e-mail — ou um contato cujo titular autorizou a consulta — aparece associado a perfis publicamente identificáveis em sites de relacionamento.</strong></p>
   <p>Informe um número de telefone ou e-mail autorizado. A consulta só poderá apresentar resultados quando houver uma fonte pública ou integração oficial disponível. Não acessamos contas privadas nem confirmamos cadastros por métodos ocultos.</p>
   <div class="platform-grid" aria-label="Plataformas de relacionamento contempladas">
-   <div class="platform-tile"><img src="https://cdn.simpleicons.org/tinder/FE3C72" alt="Ícone do Tinder" loading="lazy"><span>Tinder</span></div>
-   <div class="platform-tile"><img src="https://cdn.simpleicons.org/badoo/783BF9" alt="Ícone do Badoo" loading="lazy"><span>Badoo</span></div>
-   <div class="platform-tile"><img src="https://cdn.simpleicons.org/bumble/FFC629" alt="Ícone do Bumble" loading="lazy"><span>Bumble</span></div>
+   <div class="platform-tile"><span class="brand-logo tinder-logo" aria-hidden="true">🔥</span><span>Tinder</span></div>
+   <div class="platform-tile"><span class="brand-logo badoo-logo" aria-hidden="true">b</span><span>Badoo</span></div>
+   <div class="platform-tile"><span class="brand-logo bumble-logo" aria-hidden="true">b</span><span>Bumble</span></div>
    <div class="platform-tile platform-wordmark"><span class="other-mark">+</span><span>Outras plataformas</span></div>
   </div>
   <div class="lookup-disclaimer">A ausência de resultados não prova que a pessoa não tenha cadastro. A consulta depende de dados públicos e de integrações autorizadas; nenhuma plataforma está conectada neste momento.</div>
@@ -47,7 +47,8 @@
   <input id="lookup-identifier" name="identifier" type="tel" inputmode="tel" autocomplete="off" maxlength="254" placeholder="(00) 00000-0000" required>
   <label class="lookup-consent"><input type="checkbox" id="lookup-consent" required><span>Confirmo que sou titular deste contato ou tenho autorização válida e explícita do titular para esta consulta.</span></label>
   <button class="button full" id="lookup-submit" type="submit">Verificar disponibilidade da consulta →</button>
-  <p class="lookup-result" id="lookup-result" role="status" aria-live="polite">Seus dados não serão enviados às plataformas. A consulta só será executada quando houver integração oficial autorizada.</p>
+  <div class="lookup-progress" id="lookup-progress" hidden aria-live="polite"><div class="scan-orb"><span></span></div><strong>Estamos pesquisando…</strong><small>Verificando a disponibilidade das fontes autorizadas.</small></div>
+  <p class="lookup-result" id="lookup-result" role="status" aria-live="polite">A consulta depende de fontes públicas e integrações oficiais. Nenhuma plataforma está conectada neste momento.</p>
  </form>
 </section>
 
