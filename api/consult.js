@@ -51,7 +51,7 @@ export default async function handler(req, res) {
       ok: false,
       code: 'PROVIDER_NOT_CONFIGURED',
       status: 'not_confirmed',
-      message: 'Não foi possível concluir a consulta no momento. Tente novamente mais tarde.'
+      message: 'Nenhum resultado está disponível para exibição neste momento.'
     });
   }
 
