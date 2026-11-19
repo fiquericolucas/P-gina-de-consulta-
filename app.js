@@ -21,7 +21,7 @@ if(lookupForm){
    if(!response.ok)throw new Error(data.message||'Não foi possível verificar os cadastros.');
    if(data.status==='no_match'){
     result.className='lookup-result success';
-    result.textContent='Não foi encontrado nenhum perfil com esses dados.';
+    result.textContent='Não conseguimos encontrar nada cadastrado com esses dados.';
    }else if(data.status==='match'){
     result.className='lookup-result success';
     result.textContent=data.message||'A fonte autorizada retornou uma correspondência pública. Confira a fonte original.';
