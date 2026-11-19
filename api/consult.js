@@ -51,7 +51,7 @@ export default async function handler(req, res) {
       ok: false,
       code: 'PROVIDER_NOT_CONFIGURED',
       status: 'not_confirmed',
-      message: 'A consulta ainda não está disponível. A API genérica foi preparada, mas falta conectar uma fonte pública ou integração oficial autorizada. Nenhum cadastro foi consultado.'
+      message: 'Não foi possível concluir a consulta no momento. Tente novamente mais tarde.'
     });
   }
 
