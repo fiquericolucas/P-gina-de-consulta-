@@ -19,7 +19,16 @@ if(lookupForm){
    const response=await fetch('/api/consult',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({method:method.value,identifier:identifier.value.trim(),consent:true})});
    const data=await response.json();
    if(!response.ok)throw new Error(data.message||'Não foi possível verificar os cadastros.');
-   result.className='lookup-result success';result.textContent=data.message||'Consulta concluída.';
+   if(data.status==='no_match'){
+    result.className='lookup-result success';
+    result.textContent='Não foi encontrado nenhum perfil com esses dados.';
+   }else if(data.status==='match'){
+    result.className='lookup-result success';
+    result.textContent=data.message||'A fonte autorizada retornou uma correspondência pública. Confira a fonte original.';
+   }else{
+    result.className='lookup-result';
+    result.textContent=data.message||'Não foi possível concluir a verificação.';
+   }
   }catch(error){result.className='lookup-result error';result.textContent=error.message||'Não foi possível verificar os cadastros.';}
   finally{progress.hidden=true;submit.disabled=false;submit.textContent='Verificar disponibilidade da consulta →';}
  });
