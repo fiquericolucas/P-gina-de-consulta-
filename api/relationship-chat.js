@@ -45,7 +45,7 @@ export default async function handler(req,res){
  for(const item of messages){if(!item||!['user','assistant'].includes(item.role)||typeof item.content!=='string'||!item.content.trim()||item.content.length>1600)return res.status(400).json({message:'Mensagem inválida. Cada mensagem deve ter até 1.600 caracteres.'});input.push({role:item.role,content:item.content.trim()});}
  if(input[input.length-1].role!=='user')return res.status(400).json({message:'A última mensagem precisa ser sua.'});
  try{
-  const upstream=await fetch('https://api.openai.com/v1/responses',{method:'POST',headers:{'Authorization':'Bearer '+process.env.OPENAI_API_KEY,'Content-Type':'application/json'},body:JSON.stringify({model:process.env.OPENAI_MODEL||'gpt-6.2-astra',instructions:SYSTEM_PROMPT,input,max_output_tokens:900,store:false,text:{format:{type:'json_schema',name:'verifica_relationship_assessment',strict:true,schema}}})});
+  const upstream=await fetch('https://api.openai.com/v1/responses',{method:'POST',headers:{'Authorization':'Bearer '+process.env.OPENAI_API_KEY,'Content-Type':'application/json'},body:JSON.stringify({model:process.env.OPENAI_MODEL||'gpt-6.2-sol',instructions:SYSTEM_PROMPT,input,max_output_tokens:900,store:false,text:{format:{type:'json_schema',name:'verifica_relationship_assessment',strict:true,schema}}})});
   const payload=await upstream.json().catch(()=>({}));
   if(!upstream.ok){console.error('Verifica+ AI provider error:',upstream.status,payload?.error?.type||'provider_error');return res.status(502).json({message:'O serviço de IA não respondeu corretamente. Tente novamente em instantes.'});}
   const output=(payload.output||[]).flatMap(item=>item.content||[]).find(item=>item.type==='output_text')?.text||payload.output_text||'';
@@ -54,7 +54,8 @@ export default async function handler(req,res){
   const a=parsed.assessment;
   const score=Math.max(0,Math.min(100,Math.round(Number(a.attention_index)||0)));
   const allowed=['low','medium','high','insufficient'];
-  const ready=a.ready===true;
+  const userTurns=input.filter(item=>item.role==='user').length;
+  const ready=a.ready===true&&userTurns>=3;
   a.ready=ready;a.attention_index=ready?score:0;a.level=ready&&allowed.includes(a.level)?a.level:'insufficient';
   if(!ready)a.dimensions={communication:'insufficient',consistency:'insufficient',recurrence:'insufficient',agreements:'insufficient'};
   return res.status(200).json({reply:parsed.reply,assessment:a});
