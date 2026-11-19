@@ -211,3 +211,17 @@ footer{border-color:#f0dce9}
 .secondary-cta{display:inline-block;margin-left:12px;color:#a43d7b;font-size:13px;font-weight:800;text-decoration:none}
 @media(max-width:850px){.lookup-section{margin:0 18px 65px;padding:28px 20px;grid-template-columns:1fr;gap:25px}.platform-grid{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:460px){.platform-grid{grid-template-columns:repeat(2,1fr)}.lookup-form{padding:21px}.secondary-cta{display:block;margin:13px 0 0}}
+
+/* Marcas e estado visual da consulta, sem depender de imagens externas. */
+.platform-tile .brand-logo{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;font-size:23px;font-weight:950;line-height:1}
+.tinder-logo{background:linear-gradient(145deg,#ff7858,#f52d69);color:white;text-shadow:0 1px 2px #8b1f40}
+.badoo-logo{background:#783bf9;color:white;font-family:Arial,sans-serif;font-size:29px;border-radius:50%}
+.bumble-logo{background:#ffc629;color:#251b13;font-family:Arial,sans-serif;font-size:28px}
+.lookup-progress{margin:17px 0 10px;padding:20px 12px;display:flex;flex-direction:column;align-items:center;gap:7px;border:1px solid #f0dce9;border-radius:15px;background:linear-gradient(135deg,#fff4f9,#fff)}
+.lookup-progress[hidden]{display:none}
+.lookup-progress strong{font-size:15px;color:#a43d7b}
+.lookup-progress small{font-size:11px;color:var(--muted);text-align:center}
+.scan-orb{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,#f9d6e8 0 24%,#fcecf4 25% 58%,#f5d8e8 59% 62%,#fff 63%);position:relative;overflow:hidden}
+.scan-orb:before{content:"";position:absolute;width:50%;height:50%;left:50%;top:0;transform-origin:0 100%;background:linear-gradient(45deg,#d94f91aa,transparent 70%);animation:radar-sweep 1.25s linear infinite}
+.scan-orb span{width:8px;height:8px;border-radius:50%;background:#d94f91;z-index:1;box-shadow:0 0 0 5px #d94f9122}
+@keyframes radar-sweep{to{transform:rotate(360deg)}}
