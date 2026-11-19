@@ -146,3 +146,45 @@ footer{border-color:#f0dce9}
 .chat-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.chat-actions small{color:var(--muted);font-size:10px;max-width:55%}.chat-footnote{margin:13px 0 0;color:var(--muted);font-size:10px;line-height:1.6}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media(max-width:600px){.relationship-chat{padding:15px}.chat-bubble{max-width:96%}.chat-actions{align-items:stretch}.chat-actions .button{width:100%}.chat-actions small{max-width:100%}}
+
+/* Verifica+ — interface focada na consultora e no indicador contextual */
+.verifica-app{background:#fffafd;color:#2c2635}
+.verifica-app .topbar{background:#fffafd}
+.verifica-app .brand-mark{background:#a3428a}
+.verifica-app .hero-chat{align-items:center}
+.verifica-app .hero h1 span{background:linear-gradient(90deg,#ed568e,#8b3f82);-webkit-background-clip:text;background-clip:text;color:transparent}
+.verifica-app .intro-card{align-self:center}
+.feature-line{display:flex;align-items:flex-start;gap:15px;padding:18px 2px;border-bottom:1px solid #f3e5ed}
+.feature-line:last-of-type{border-bottom:0}
+.feature-line>b{display:grid;place-items:center;flex:0 0 36px;height:36px;border-radius:12px;background:#fce8f2;color:#a3428a;font-size:12px}
+.feature-line strong,.feature-line small{display:block}
+.feature-line strong{font-size:14px;color:#403448}
+.feature-line small{font-size:12px;color:#817487;margin-top:5px;line-height:1.5}
+.verifica-app .relationship-ai{background:linear-gradient(180deg,#fff1f7,#fffafd)}
+.verifica-app .ai-panel{max-width:900px;border-color:#f0dce9;box-shadow:0 22px 70px #7e326d12}
+.verifica-app .ai-avatar{background:linear-gradient(135deg,#ed5a91,#a3428a)}
+.verifica-app .ai-status{background:#fce8f2;color:#a3428a}
+.verifica-app .chat-live{background:#fce8f2;color:#a3428a}
+.verifica-app .chat-bubble.user{background:linear-gradient(100deg,#ed5a91,#a3428a)}
+.verifica-app .chat-form textarea{border-color:#eadce6}
+.attention-card{margin:24px 0 0;padding:22px;border:1px solid #f0dce9;border-radius:18px;background:linear-gradient(145deg,#fff,#fff7fb)}
+.attention-header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.attention-header h3{font-size:19px;margin:6px 0 0;color:#3d3043}
+.attention-state{font-size:11px;font-weight:800;color:#8b3f82;background:#fce8f2;padding:8px 11px;border-radius:99px}
+.attention-content{display:flex;align-items:center;gap:24px;padding:22px 0}
+.gauge{--score:0;--fill:#9d8fa0;width:150px;height:150px;flex:0 0 150px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--fill) calc(var(--score)*1%),#f2e8ee 0);position:relative}
+.gauge:before{content:"";position:absolute;inset:12px;border-radius:50%;background:#fff}
+.gauge-center{position:relative;display:flex;align-items:baseline;gap:3px}
+.gauge-center strong{font-size:36px;letter-spacing:-2px;color:#49364b}
+.gauge-center span{font-size:11px;color:#88798b}
+.attention-copy{flex:1}
+.attention-copy>strong{font-size:17px;color:#49364b}
+.attention-copy p{font-size:13px;line-height:1.65;color:#766b7e;margin:8px 0}
+.attention-copy small,.attention-footnote{font-size:10px;line-height:1.6;color:#928596}
+.attention-dimensions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+.attention-dimensions>div{display:flex;flex-direction:column;gap:7px;padding:12px;border:1px solid #f1e4ec;border-radius:12px;background:#fff}
+.attention-dimensions span{font-size:10px;color:#827486}
+.attention-dimensions b{font-size:12px;color:#49364b}
+.attention-footnote{border-top:1px solid #f1e5ed;padding-top:13px;margin:15px 0 0}
+.verifica-app .disclaimer{max-width:900px;margin:0 auto 55px}
+@media(max-width:650px){.attention-content{flex-direction:column;text-align:center;gap:15px}.attention-dimensions{grid-template-columns:repeat(2,minmax(0,1fr))}.attention-header{align-items:flex-start;flex-direction:column}.gauge{width:136px;height:136px;flex-basis:136px}.verifica-app .hero{padding-top:20px}}
