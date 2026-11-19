@@ -11,18 +11,46 @@
 <main>
 <section class="hero hero-chat">
 <div class="hero-copy"><span class="eyebrow"><span class="dot"></span> CLAREZA, CONTEXTO E ACOLHIMENTO</span>
-<h1>Seu relacionamento merece <span>respostas mais claras.</span></h1>
-<p class="lead">Converse com uma consultora de IA que escuta sua história, ajuda a separar fatos de interpretações, identifica pontos que merecem atenção e apresenta caminhos para você tirar suas próprias conclusões.</p>
+<h1>Sente seu parceiro ou parceira distante? <span>Acha que está tendo um caso com outra pessoa?</span></h1>
+<p class="lead">Descubra se há perfis publicamente identificáveis associados a um contato que você tem autorização para consultar. Depois, converse com nossa consultora de IA para analisar sua situação com mais clareza.</p>
 <div class="price-box"><div><small>Acesso à análise personalizada</small><strong>R$ 24,90 <span>/ acesso</span></strong></div><span class="tag">PAGAMENTO EM CONFIGURAÇÃO</span></div>
-<a class="button" href="#inteligencia">Começar minha conversa <span aria-hidden="true">→</span></a>
-<div class="trust"><span>✓ Sem investigar terceiros</span><span>✓ Sem pedir senhas</span><span>✓ Orientação sem julgamentos</span></div>
+<a class="button" href="#consulta">Consultar agora <span aria-hidden="true">→</span></a> <a class="secondary-cta" href="#inteligencia">Conhecer a consultora IA</a>
+<div class="trust"><span>✓ Consulta com autorização</span><span>✓ Sem pedir senhas</span><span>✓ Orientação sem julgamentos</span></div>
 </div>
-<div class="preview-card intro-card"><div class="card-heading"><div><small>VERIFICA+ INTELIGÊNCIA</small><h2>Uma conversa que ajuda a enxergar melhor</h2></div><span class="shield">V+</span></div>
-<div class="feature-line"><b>01</b><div><strong>Conte o que está acontecendo</strong><small>Fale no seu ritmo, sem questionários longos.</small></div></div>
-<div class="feature-line"><b>02</b><div><strong>Entenda os pontos de atenção</strong><small>Contexto, frequência, comunicação e acordos.</small></div></div>
-<div class="feature-line"><b>03</b><div><strong>Receba uma análise personalizada</strong><small>Possíveis interpretações e próximos passos.</small></div></div>
+<div class="preview-card intro-card"><div class="card-heading"><div><small>VERIFICA+ INTELIGÊNCIA</small><h2>Consulta + orientação em um só lugar</h2></div><span class="shield">V+</span></div>
+<div class="feature-line"><b>01</b><div><strong>Consulte um contato autorizado</strong><small>Use somente seu contato ou um contato com autorização do titular.</small></div></div>
+<div class="feature-line"><b>02</b><div><strong>Veja o que pode ser verificado</strong><small>Somente fontes públicas e integrações oficiais disponíveis.</small></div></div>
+<div class="feature-line"><b>03</b><div><strong>Converse com a consultora IA</strong><small>Contexto, comunicação e próximos passos.</small></div></div>
 <p class="notice">A ferramenta não comprova infidelidade. O indicador visual representa somente os pontos relatados que merecem esclarecimento.</p></div>
 </section>
+
+<section class="lookup-section" id="consulta">
+ <div class="lookup-copy">
+  <span class="eyebrow">CONSULTA DE PERFIS</span>
+  <h2>Sente seu parceiro ou parceira distante? Acha que está tendo um caso com outra pessoa?</h2>
+  <p class="lookup-lead"><strong>Descubra se o seu próprio telefone ou e-mail — ou um contato cujo titular autorizou a consulta — aparece associado a perfis publicamente identificáveis em sites de relacionamento.</strong></p>
+  <p>Informe um número de telefone ou e-mail autorizado. A consulta só poderá apresentar resultados quando houver uma fonte pública ou integração oficial disponível. Não acessamos contas privadas nem confirmamos cadastros por métodos ocultos.</p>
+  <div class="platform-grid" aria-label="Plataformas de relacionamento contempladas">
+   <div class="platform-tile"><img src="https://cdn.simpleicons.org/tinder/FE3C72" alt="Ícone do Tinder" loading="lazy"><span>Tinder</span></div>
+   <div class="platform-tile"><img src="https://cdn.simpleicons.org/badoo/783BF9" alt="Ícone do Badoo" loading="lazy"><span>Badoo</span></div>
+   <div class="platform-tile"><img src="https://cdn.simpleicons.org/bumble/FFC629" alt="Ícone do Bumble" loading="lazy"><span>Bumble</span></div>
+   <div class="platform-tile platform-wordmark"><span class="other-mark">+</span><span>Outras plataformas</span></div>
+  </div>
+  <div class="lookup-disclaimer">A ausência de resultados não prova que a pessoa não tenha cadastro. A consulta depende de dados públicos e de integrações autorizadas; nenhuma plataforma está conectada neste momento.</div>
+ </div>
+ <form class="lookup-form" id="lookup-form">
+  <span class="form-kicker">COMECE SUA CONSULTA</span>
+  <h3>Qual contato você tem autorização para consultar?</h3>
+  <label for="lookup-method">Tipo de informação</label>
+  <select id="lookup-method" name="method" required><option value="phone">Número de telefone</option><option value="email">E-mail</option></select>
+  <label for="lookup-identifier">Telefone ou e-mail</label>
+  <input id="lookup-identifier" name="identifier" type="tel" inputmode="tel" autocomplete="off" maxlength="254" placeholder="(00) 00000-0000" required>
+  <label class="lookup-consent"><input type="checkbox" id="lookup-consent" required><span>Confirmo que sou titular deste contato ou tenho autorização válida e explícita do titular para esta consulta.</span></label>
+  <button class="button full" id="lookup-submit" type="submit">Verificar disponibilidade da consulta →</button>
+  <p class="lookup-result" id="lookup-result" role="status" aria-live="polite">Seus dados não serão enviados às plataformas. A consulta só será executada quando houver integração oficial autorizada.</p>
+ </form>
+</section>
+
 <section class="relationship-ai" id="inteligencia">
 <div class="section-title"><span class="eyebrow">SUA CONSULTORA PARTICULAR</span><h2>Vamos conversar sobre seu relacionamento?</h2><p>A IA fará perguntas conforme entender sua história. Quanto mais contexto você compartilhar, mais útil poderá ser a reflexão — sem precisar informar nomes ou dados pessoais.</p></div>
 <div class="ai-panel">
