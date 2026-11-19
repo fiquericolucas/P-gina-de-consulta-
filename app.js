@@ -13,14 +13,15 @@ if(lookupForm){
  lookupForm.addEventListener('submit',async event=>{
   event.preventDefault();
   if(!document.getElementById('lookup-consent').checked)return;
-  submit.disabled=true;submit.textContent='Verificando…';result.className='lookup-result';result.textContent='Validando a disponibilidade da consulta…';
+  submit.disabled=true;submit.textContent='Pesquisando…';result.className='lookup-result';result.textContent='';const progress=document.getElementById('lookup-progress');progress.hidden=false;
   try{
+   await new Promise(resolve=>setTimeout(resolve,1800));
    const response=await fetch('/api/consult',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({method:method.value,identifier:identifier.value.trim(),consent:true})});
    const data=await response.json();
-   if(!response.ok)throw new Error(data.message||'A consulta ainda não está disponível.');
-   result.className='lookup-result success';result.textContent=data.message||'Consulta recebida.';
-  }catch(error){result.className='lookup-result error';result.textContent=error.message||'Não foi possível concluir a solicitação.';}
-  finally{submit.disabled=false;submit.textContent='Verificar disponibilidade da consulta →';}
+   if(!response.ok)throw new Error(data.message||'Não foi possível verificar os cadastros.');
+   result.className='lookup-result success';result.textContent=data.message||'Consulta concluída.';
+  }catch(error){result.className='lookup-result error';result.textContent=error.message||'Não foi possível verificar os cadastros.';}
+  finally{progress.hidden=true;submit.disabled=false;submit.textContent='Verificar disponibilidade da consulta →';}
  });
 }
 
